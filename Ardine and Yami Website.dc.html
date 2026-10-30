@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/industry-f2d790ac-3642-488f-91fd-d22d883f2639/styles.css">
+<script src="_ds/industry-f2d790ac-3642-488f-91fd-d22d883f2639/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>body{margin:0;text-wrap:pretty}a{color:var(--color-accent-700);text-decoration:none}a:hover{color:var(--color-accent-900);text-decoration:underline}</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#5980a6"></rect><text x="50" y="60" text-anchor="middle" font-family="Georgia,serif" font-size="28" fill="#f2f2f3">A&amp;Y</text></svg></template>
+<div style="min-height:100vh;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)">
+
+<header style="position:sticky;top:0;z-index:20;background:var(--color-bg);border-bottom:1px solid var(--color-divider)">
+  <div style="max-width:1280px;margin:0 auto;padding:14px clamp(20px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px">
+    <button onClick="{{ go.home }}" aria-label="Ardine &amp; Yami — home" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:10px">
+      <span style="display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center"><span role="img" aria-label="Ardine &amp; Yami" style="display:block;width:200px;height:46px;background-image:url(assets/ardine-yami-logo.png);background-size:250.8px 250.8px;background-position:-26px -96px;background-repeat:no-repeat;mix-blend-mode:multiply"></span><span style="font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--color-accent-700);font-weight:600;white-space:nowrap">International Recruitment</span></span>
+    </button>
+    <sc-if value="{{ wide }}" hint-placeholder-val="{{ true }}">
+      <nav style="display:flex;gap:20px;flex:1;justify-content:center;font-size:14px;font-weight:500">
+        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="8">
+          <button onClick="{{ n.go }}" style="all:unset;cursor:pointer;padding:6px 0;white-space:nowrap" style-hover="color:var(--color-accent-700)">{{ n.label }}</button>
+        </sc-for>
+      </nav>
+    </sc-if>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;align-items:center">
+      <sc-if value="{{ showCtas }}" hint-placeholder-val="{{ true }}">
+        <button class="btn btn-secondary" onClick="{{ go.jobs }}">Find International Jobs</button>
+        <button class="btn btn-primary" onClick="{{ go.employers }}">Hire International Talent</button>
+      </sc-if>
+      <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+        <button class="btn btn-secondary" onClick="{{ toggleMenu }}" aria-expanded="{{ menuOpen }}">{{ menuLabel }}</button>
+      </sc-if>
+    </div>
+  </div>
+  <sc-if value="{{ menuVisible }}" hint-placeholder-val="{{ false }}">
+    <nav style="border-top:1px solid var(--color-divider);padding:8px clamp(20px,5vw,56px) 20px;display:flex;flex-direction:column">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="8">
+        <button onClick="{{ n.go }}" style="all:unset;cursor:pointer;padding:12px 0;min-height:24px;border-bottom:1px solid var(--color-divider);font-family:var(--font-heading);font-size:20px;text-transform:uppercase" style-hover="color:var(--color-accent-700)">{{ n.label }}</button>
+      </sc-for>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;padding-top:16px">
+        <button class="btn btn-secondary" onClick="{{ go.jobs }}">Find International Jobs</button>
+        <button class="btn btn-primary" onClick="{{ go.employers }}">Hire International Talent</button>
+      </div>
+    </nav>
+  </sc-if>
+</header>
+
+<main>
+<!-- ============ HOME ============ -->
+<sc-if value="{{ is.home }}" hint-placeholder-val="{{ true }}">
+  <section style="max-width:1280px;margin:0 auto;padding:clamp(48px,8vw,112px) clamp(20px,5vw,56px) 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:48px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <h1 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(44px,6.4vw,88px);line-height:1.02;text-transform:uppercase;margin:0;letter-spacing:0.01em">Connecting global talent with international opportunities</h1>
+      <p style="font-size:18px;line-height:1.6;margin:0;max-width:58ch;color:color-mix(in srgb,var(--color-text) 80%,transparent)">We connect professionals from around the world with employers seeking the right skills, experience and potential. Through our international recruitment network, we support opportunities across the UK, Australia, Canada, Germany, New Zealand, France, Spain and the GCC.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-primary" onClick="{{ go.jobs }}">Explore job opportunities</button>
+        <button class="btn btn-secondary" onClick="{{ go.employers }}">Find the right talent</button>
+      </div>
+    </div>
+    <figure class="blueprint" style="margin:0;position:relative;aspect-ratio:5/4">
+      <sc-for list="{{ pic.hero }}" as="p" hint-placeholder-count="0"><div role="img" aria-label="{{ p.alt }}" style="position:absolute;inset:0;background:center / cover no-repeat url({{ p.src }})"></div></sc-for><sc-if value="{{ nopic.hero }}" hint-placeholder-val="{{ true }}"><image-slot id="home-hero" shape="rect" placeholder="Hero photograph — professionals in an international business setting"></image-slot></sc-if>
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    </figure>
+  </section>
+
+  <section style="border-top:1px solid var(--color-divider);border-bottom:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr))">
+      <button onClick="{{ go.candidates }}" style="all:unset;cursor:pointer;padding:40px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--color-divider)" style-hover="background:var(--color-accent-100)">
+        <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">I'm a candidate</span>
+        <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:32px;text-transform:uppercase">Search vacancies and submit your CV →</span>
+      </button>
+      <button onClick="{{ go.employers }}" style="all:unset;cursor:pointer;padding:40px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:12px" style-hover="background:var(--color-accent-100)">
+        <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">I'm an employer</span>
+        <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:32px;text-transform:uppercase">Tell us the roles you need to fill →</span>
+      </button>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:96px clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">01 · Who we are</span>
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(32px,4vw,52px);line-height:1.05;text-transform:uppercase;margin:0">One recruitment network, sourcing talent across borders</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;font-size:17px;line-height:1.65">
+      <p style="margin:0">Ardine &amp; Yami is an international recruitment agency headquartered in the United Arab Emirates, with regional offices in India, the United Kingdom and Australia. Our teams source candidates internationally and work with employers abroad to find suitable matches.</p>
+      <p style="margin:0">We keep the service personal: clear communication at every stage, structured screening, and an honest view of what each role requires.</p>
+      <a href="#" onClick="{{ go.about }}" style="font-weight:600">About Ardine &amp; Yami →</a>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,56px) 96px;display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px;border-bottom:1px solid var(--color-divider);padding-bottom:16px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">02 · Our global reach</span>
+        <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(32px,4vw,52px);line-height:1.05;text-transform:uppercase;margin:0">Destination markets — Europe, Oceania, North America &amp; the GCC</h2>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:32px">
+      <sc-for list="{{ countries }}" as="c" hint-placeholder-count="7">
+        <button onClick="{{ c.open }}" class="card blueprint" style="all:unset;cursor:pointer;position:relative;border:1px solid var(--color-divider);padding:16px;display:flex;flex-direction:column;gap:14px" style-hover="background:var(--color-accent-100)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--color-neutral-100)"><sc-if value="{{ c.img }}" hint-placeholder-val="{{ false }}"><div role="img" aria-label="{{ c.imgHint }}" style="position:absolute;inset:0;background:center / cover no-repeat url({{ c.img }})"></div></sc-if><sc-if value="{{ c.noImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ c.imgId }}" shape="rect" placeholder="{{ c.imgHint }}"></image-slot></sc-if></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+            <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:24px;text-transform:uppercase">{{ c.name }}</span>
+            <span style="font-size:12px;letter-spacing:0.08em;font-weight:600;color:var(--color-accent-700)">{{ c.code }}</span>
+          </div>
+          <span style="font-size:14px;line-height:1.5;color:color-mix(in srgb,var(--color-text) 75%,transparent)">{{ c.short }}</span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="background:var(--color-accent-900);color:var(--color-bg)">
+    <div style="max-width:1280px;margin:0 auto;padding:96px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-200)">03 · Our global offices</span>
+        <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(32px,4vw,52px);line-height:1.05;text-transform:uppercase;margin:0">One head office, three regional teams</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));border-top:1px solid var(--color-accent-700)">
+        <sc-for list="{{ offices }}" as="o" hint-placeholder-count="5">
+          <div style="padding:24px 20px 24px 0;border-bottom:1px solid var(--color-accent-700);display:flex;flex-direction:column;gap:8px">
+            <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-200)">{{ o.role }}</span>
+            <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:28px;text-transform:uppercase">{{ o.country }}</span>
+            <span style="font-size:14px;color:var(--color-accent-200)">Address to be confirmed</span>
+          </div>
+        </sc-for>
+      </div>
+      <a href="#" onClick="{{ go.offices }}" style="color:var(--color-bg);font-weight:600">View office details →</a>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:96px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--color-divider);padding-bottom:16px">
+      <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">04 · Recruitment services</span>
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(32px,4vw,52px);line-height:1.05;text-transform:uppercase;margin:0">What we do for employers and candidates</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:32px">
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="12">
+        <button onClick="{{ s.open }}" class="card blueprint" style="all:unset;cursor:pointer;position:relative;border:1px solid var(--color-divider);padding:24px;display:flex;flex-direction:column;gap:10px" style-hover="background:var(--color-accent-100)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <span style="font-size:12px;letter-spacing:0.08em;font-weight:600;color:var(--color-accent-700)">{{ s.num }}</span>
+          <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:22px;text-transform:uppercase">{{ s.name }}</span>
+          <span style="font-size:14px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">{{ s.desc }}</span>
+          <span style="font-size:13px;font-weight:600;color:var(--color-accent-700)">Learn more →</span>
+        </button>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,56px) 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">05 · Industries we serve</span>
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(32px,4vw,52px);line-height:1.05;text-transform:uppercase;margin:0">Sectors we recruit for</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));border-top:1px solid var(--color-divider)">
+      <sc-for list="{{ industries }}" as="i" hint-placeholder-count="11">
+        <div style="padding:16px 0;border-bottom:1px solid var(--color-divider);display:flex;gap:12px;font-size:16px"><span style="color:var(--color-accent-700);font-weight:600;font-size:12px;padding-top:3px">{{ i.num }}</span>{{ i.name }}</div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto;padding:96px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">06 · How it works</span>
+        <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(32px,4vw,52px);line-height:1.05;text-transform:uppercase;margin:0">Our recruitment process</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px">
+        <div style="display:flex;flex-direction:column;gap:0">
+          <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:22px;text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid var(--color-text)">For candidates</span>
+          <sc-for list="{{ stepsCand }}" as="st" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:48px 1fr;padding:16px 0;border-bottom:1px solid var(--color-divider);font-size:16px;line-height:1.5"><span style="font-family:var(--font-heading);font-size:22px;color:var(--color-accent-700)">{{ st.n }}</span>{{ st.t }}</div>
+          </sc-for>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0">
+          <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:22px;text-transform:uppercase;padding-bottom:12px;border-bottom:1px solid var(--color-text)">For employers</span>
+          <sc-for list="{{ stepsEmp }}" as="st" hint-placeholder-count="5">
+            <div style="display:grid;grid-template-columns:48px 1fr;padding:16px 0;border-bottom:1px solid var(--color-divider);font-size:16px;line-height:1.5"><span style="font-family:var(--font-heading);font-size:22px;color:var(--color-accent-700)">{{ st.n }}</span>{{ st.t }}</div>
+          </sc-for>
+        </div>
+      </div>
+      <p style="margin:0;font-size:14px;line-height:1.6;max-width:80ch;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Final hiring decisions are made by employers. Work permits and visas are decided by the relevant government authorities. We do not guarantee employment, sponsorship or immigration outcomes.</p>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,56px) 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:start">
+    <figure class="blueprint" style="margin:0;position:relative;aspect-ratio:4/5">
+      <sc-for list="{{ pic.why }}" as="p" hint-placeholder-count="0"><div role="img" aria-label="{{ p.alt }}" style="position:absolute;inset:0;background:center / cover no-repeat url({{ p.src }})"></div></sc-for><sc-if value="{{ nopic.why }}" hint-placeholder-val="{{ true }}"><image-slot id="home-why" shape="rect" placeholder="Photograph — consultant in conversation with a candidate"></image-slot></sc-if>
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    </figure>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">07 · Why work with us</span>
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(32px,4vw,52px);line-height:1.05;text-transform:uppercase;margin:0">How we work</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:0 32px;border-top:1px solid var(--color-divider)">
+        <sc-for list="{{ why }}" as="w" hint-placeholder-count="8">
+          <div style="padding:18px 0;border-bottom:1px solid var(--color-divider);display:flex;flex-direction:column;gap:6px">
+            <span style="font-weight:600;font-size:16px">{{ w.t }}</span>
+            <span style="font-size:14px;line-height:1.5;color:color-mix(in srgb,var(--color-text) 75%,transparent)">{{ w.d }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto;padding:96px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px">
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">08 · Latest opportunities</span>
+          <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(32px,4vw,52px);line-height:1.05;text-transform:uppercase;margin:0">Current vacancies</h2>
+        </div>
+        <button class="btn btn-secondary" onClick="{{ go.jobs }}">Browse all vacancies</button>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:32px">
+        <sc-for list="{{ latestJobs }}" as="j" hint-placeholder-count="3">
+          <div class="card blueprint" style="position:relative;border:1px solid var(--color-divider);padding:24px;display:flex;flex-direction:column;gap:14px">
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><span class="tag tag-outline">Sample listing</span><span class="tag tag-accent">{{ j.type }}</span></div>
+            <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:26px;line-height:1.1;text-transform:uppercase">{{ j.title }}</span>
+            <span style="font-size:14px;color:color-mix(in srgb,var(--color-text) 75%,transparent)">{{ j.employer }}</span>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:14px;border-top:1px solid var(--color-divider);padding-top:14px">
+              <span>{{ j.city }}, {{ j.country }}</span><span>{{ j.cat }}</span><span>{{ j.exp }}</span><span>{{ j.salary }}</span>
+            </div>
+            <span style="font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 70%,transparent)">Posted {{ j.posted }}</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-secondary" onClick="{{ j.open }}">View details</button><button class="btn btn-primary" onClick="{{ j.apply }}">Apply now</button></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+    <div style="padding:80px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:20px;align-items:start;border-top:1px solid var(--color-divider)">
+      <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">For candidates</span>
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(30px,3.4vw,44px);line-height:1.05;text-transform:uppercase;margin:0">Your next career opportunity could be international</h2>
+      <button class="btn btn-primary" onClick="{{ go.jobs }}">Explore jobs</button>
+    </div>
+    <div style="padding:80px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:20px;align-items:start;background:var(--color-accent-900);color:var(--color-bg)">
+      <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-200)">For employers</span>
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(30px,3.4vw,44px);line-height:1.05;text-transform:uppercase;margin:0">Find the right talent for your business</h2>
+      <button class="btn btn-secondary" onClick="{{ go.employers }}" style="color:var(--color-bg);border-color:var(--color-bg)">Request recruitment support</button>
+    </div>
+  </section>
+
+  <section style="max-width:1280px;margin:0 auto;padding:96px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">09 · Testimonials</span>
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(32px,4vw,52px);line-height:1.05;text-transform:uppercase;margin:0">In their words</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px">
+      <sc-for list="{{ testimonials }}" as="t" hint-placeholder-count="2">
+        <figure class="blueprint" style="margin:0;position:relative;border:1px dashed var(--color-divider);padding:32px;display:flex;flex-direction:column;gap:20px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <span class="tag tag-outline" style="align-self:start">Placeholder — approved testimonial required</span>
+          <blockquote style="margin:0;font-family:var(--font-heading);font-size:26px;line-height:1.25">“{{ t.q }}”</blockquote>
+          <figcaption style="font-size:14px;color:color-mix(in srgb,var(--color-text) 70%,transparent)">— {{ t.by }}</figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ============ GENERIC PAGE HEAD ============ -->
+<sc-if value="{{ notHome }}" hint-placeholder-val="{{ false }}">
+  <section style="border-bottom:1px solid var(--color-divider)">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,5vw,56px) 48px;display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;gap:8px;font-size:13px;flex-wrap:wrap"><a href="#" onClick="{{ go.home }}">Home</a><span>/</span><span>{{ head.crumb }}</span></div>
+      <span style="font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">{{ head.kicker }}</span>
+      <h1 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(40px,5.6vw,76px);line-height:1.02;text-transform:uppercase;margin:0;max-width:20ch">{{ head.title }}</h1>
+      <p style="font-size:18px;line-height:1.6;margin:0;max-width:64ch;color:color-mix(in srgb,var(--color-text) 80%,transparent)">{{ head.intro }}</p>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ============ ABOUT ============ -->
+<sc-if value="{{ is.about }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px">
+    <figure class="blueprint" style="margin:0;position:relative;aspect-ratio:4/3">
+      <sc-for list="{{ pic.about }}" as="p" hint-placeholder-count="0"><div role="img" aria-label="{{ p.alt }}" style="position:absolute;inset:0;background:center / cover no-repeat url({{ p.src }})"></div></sc-for><sc-if value="{{ nopic.about }}" hint-placeholder-val="{{ true }}"><image-slot id="about-team" shape="rect" placeholder="Photograph — the Ardine &amp; Yami team"></image-slot></sc-if>
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    </figure>
+    <div style="display:flex;flex-direction:column;gap:20px;font-size:17px;line-height:1.65">
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:36px;text-transform:uppercase;margin:0">Our approach</h2>
+      <p style="margin:0">We source candidates internationally and connect qualified people with employers abroad. Our UAE head office coordinates with regional teams in India, the United Kingdom and Australia, so candidates and clients have a local point of contact.</p>
+      <p style="margin:0">We focus on suitable matches rather than volume: understanding the role, screening carefully, and keeping both sides informed.</p>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ============ SERVICES ============ -->
+<sc-if value="{{ is.services }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:32px">
+    <sc-for list="{{ services }}" as="s" hint-placeholder-count="12">
+      <button onClick="{{ s.open }}" class="card blueprint" style="all:unset;cursor:pointer;position:relative;border:1px solid var(--color-divider);padding:24px;display:flex;flex-direction:column;gap:10px" style-hover="background:var(--color-accent-100)">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span style="font-size:12px;letter-spacing:0.08em;font-weight:600;color:var(--color-accent-700)">{{ s.num }}</span>
+        <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:24px;text-transform:uppercase">{{ s.name }}</span>
+        <span style="font-size:15px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 75%,transparent)">{{ s.desc }}</span>
+        <span style="font-size:13px;font-weight:600;color:var(--color-accent-700)">View service →</span>
+      </button>
+    </sc-for>
+  </section>
+</sc-if>
+
+<!-- ============ SERVICE DETAIL ============ -->
+<sc-if value="{{ is.service }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px">
+    <div style="display:flex;flex-direction:column;gap:24px;font-size:17px;line-height:1.65">
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:32px;text-transform:uppercase;margin:0">What this service covers</h2>
+      <p style="margin:0">{{ svc.long }}</p>
+      <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-divider)">
+        <sc-for list="{{ svcSteps }}" as="st" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:48px 1fr;padding:14px 0;border-bottom:1px solid var(--color-divider);font-size:16px"><span style="font-family:var(--font-heading);font-size:20px;color:var(--color-accent-700)">{{ st.n }}</span>{{ st.t }}</div>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn btn-primary" onClick="{{ go.employers }}">Request this service</button><button class="btn btn-secondary" onClick="{{ go.jobs }}">See related vacancies</button></div>
+    </div>
+    <figure class="blueprint" style="margin:0;position:relative;aspect-ratio:4/3">
+      <sc-for list="{{ pic.svc }}" as="p" hint-placeholder-count="0"><div role="img" aria-label="{{ p.alt }}" style="position:absolute;inset:0;background:center / cover no-repeat url({{ p.src }})"></div></sc-for><sc-if value="{{ nopic.svc }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ svc.imgId }}" shape="rect" placeholder="Service photograph"></image-slot></sc-if>
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    </figure>
+  </section>
+</sc-if>
+
+<!-- ============ JOBS ============ -->
+<sc-if value="{{ is.jobs }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:48px clamp(20px,5vw,56px) 96px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;align-items:end;border:1px solid var(--color-divider);padding:20px">
+      <div class="field"><label>Keyword</label><input class="input" placeholder="Job title or skill" value="{{ fq }}" onChange="{{ setQ }}"></input></div>
+      <div class="field"><label>Destination</label><select class="input" value="{{ fCountry }}" onChange="{{ setCountry }}"><option value="">All countries</option><sc-for list="{{ countries }}" as="c" hint-placeholder-count="7"><option value="{{ c.name }}">{{ c.name }}</option></sc-for></select></div>
+      <div class="field"><label>Category</label><select class="input" value="{{ fCat }}" onChange="{{ setCat }}"><option value="">All categories</option><sc-for list="{{ industries }}" as="i" hint-placeholder-count="11"><option value="{{ i.name }}">{{ i.name }}</option></sc-for></select></div>
+      <div class="field"><label>Employment type</label><select class="input" value="{{ fType }}" onChange="{{ setType }}"><option value="">Any</option><option>Permanent</option><option>Contract</option><option>Temporary</option></select></div>
+      <button class="btn btn-ghost" onClick="{{ clearF }}">Clear filters</button>
+    </div>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:14px">
+      <span><strong>{{ jobCount }}</strong> sample vacancies · sorted by newest</span>
+      <span style="color:color-mix(in srgb,var(--color-text) 70%,transparent)">Listings shown are design samples, not live opportunities.</span>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-text)">
+      <sc-for list="{{ filteredJobs }}" as="j" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px 24px;align-items:center;padding:20px 0;border-bottom:1px solid var(--color-divider)">
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:22px;text-transform:uppercase">{{ j.title }}</span>
+            <span style="font-size:13px;color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ j.employer }}</span>
+          </div>
+          <div style="font-size:14px;display:flex;flex-direction:column;gap:4px"><span>{{ j.city }}, {{ j.country }}</span><span>{{ j.cat }} · {{ j.type }}</span></div>
+          <div style="font-size:14px;display:flex;flex-direction:column;gap:4px"><span>{{ j.exp }}</span><span>{{ j.salary }} · Posted {{ j.posted }}</span></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end"><button class="btn btn-secondary" onClick="{{ j.open }}">View details</button><button class="btn btn-primary" onClick="{{ j.apply }}">Apply now</button></div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ noJobs }}" hint-placeholder-val="{{ false }}">
+      <div style="border:1px dashed var(--color-divider);padding:40px;text-align:center;display:flex;flex-direction:column;gap:12px;align-items:center">
+        <span style="font-family:var(--font-heading);font-size:24px;text-transform:uppercase">No vacancies match these filters</span>
+        <span style="font-size:15px">Try widening your search, or submit your CV so we can contact you about future roles.</span>
+        <button class="btn btn-primary" onClick="{{ go.submitcv }}">Submit your CV</button>
+      </div>
+    </sc-if>
+  </section>
+</sc-if>
+
+<!-- ============ JOB DETAIL ============ -->
+<sc-if value="{{ is.job }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:56px clamp(20px,5vw,56px) 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:20px;font-size:16px;line-height:1.65;grid-column:span 1">
+      <span class="tag tag-outline" style="align-self:start">Sample listing — not a live vacancy</span>
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:28px;text-transform:uppercase;margin:0">About the role</h2>
+      <p style="margin:0">{{ job.summary }}</p>
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:28px;text-transform:uppercase;margin:0">Requirements</h2>
+      <p style="margin:0">{{ job.exp }}. Relevant qualifications and, where applicable, professional registration in the destination country. Language requirements are confirmed by the employer.</p>
+      <p style="margin:0;font-size:14px;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Sponsorship, relocation and accommodation are not implied unless stated by the employer. Immigration decisions rest with the relevant authorities.</p>
+    </div>
+    <div class="card blueprint" style="position:relative;border:1px solid var(--color-divider);padding:28px;display:flex;flex-direction:column;gap:14px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <sc-for list="{{ jobFacts }}" as="f" hint-placeholder-count="7">
+        <div style="display:flex;justify-content:space-between;gap:16px;font-size:15px;padding-bottom:12px;border-bottom:1px solid var(--color-divider)"><span style="color:color-mix(in srgb,var(--color-text) 70%,transparent)">{{ f.k }}</span><span style="font-weight:600;text-align:right">{{ f.v }}</span></div>
+      </sc-for>
+      <button class="btn btn-primary btn-block" onClick="{{ job.apply }}">Apply for this role</button>
+      <button class="btn btn-ghost btn-block" onClick="{{ go.jobs }}">← Back to vacancies</button>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ============ CANDIDATES ============ -->
+<sc-if value="{{ is.candidates }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,56px);display:flex;flex-direction:column;gap:56px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:32px">
+      <sc-for list="{{ candTopics }}" as="t" hint-placeholder-count="4">
+        <div class="card blueprint" style="position:relative;border:1px solid var(--color-divider);padding:24px;display:flex;flex-direction:column;gap:10px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:22px;text-transform:uppercase">{{ t.t }}</span>
+          <span style="font-size:15px;line-height:1.55;color:color-mix(in srgb,var(--color-text) 78%,transparent)">{{ t.d }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:36px;text-transform:uppercase;margin:0">Working overseas: the general steps</h2>
+      <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-text)">
+        <sc-for list="{{ overseas }}" as="o" hint-placeholder-count="6">
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:8px 32px;padding:18px 0;border-bottom:1px solid var(--color-divider)">
+            <span style="font-weight:600;font-size:16px">{{ o.t }}</span>
+            <span style="font-size:15px;line-height:1.55">{{ o.d }}</span>
+            <span><span class="tag tag-neutral">{{ o.who }}</span></span>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:14px;max-width:80ch;color:color-mix(in srgb,var(--color-text) 75%,transparent)">This is general information only. Country-specific visa and immigration requirements must be checked against official government sources or with a qualified adviser.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap"><button class="btn btn-primary" onClick="{{ go.jobs }}">Search vacancies</button><button class="btn btn-secondary" onClick="{{ go.submitcv }}">Submit your CV</button></div>
+  </section>
+</sc-if>
+
+<!-- ============ EMPLOYERS ============ -->
+<sc-if value="{{ is.employers }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,56px) 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:32px;text-transform:uppercase;margin:0">How we support employers</h2>
+      <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-divider)">
+        <sc-for list="{{ stepsEmp }}" as="st" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:48px 1fr;padding:16px 0;border-bottom:1px solid var(--color-divider);font-size:16px;line-height:1.5"><span style="font-family:var(--font-heading);font-size:22px;color:var(--color-accent-700)">{{ st.n }}</span>{{ st.t }}</div>
+        </sc-for>
+      </div>
+      <figure class="blueprint" style="margin:0;position:relative;aspect-ratio:3/2">
+        <sc-for list="{{ pic.emp }}" as="p" hint-placeholder-count="0"><div role="img" aria-label="{{ p.alt }}" style="position:absolute;inset:0;background:center / cover no-repeat url({{ p.src }})"></div></sc-for><sc-if value="{{ nopic.emp }}" hint-placeholder-val="{{ true }}"><image-slot id="emp-photo" shape="rect" placeholder="Photograph — employer workplace or interview"></image-slot></sc-if>
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      </figure>
+    </div>
+    <div class="blueprint" style="position:relative;border:1px solid var(--color-divider);padding:32px;display:flex;flex-direction:column;gap:18px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:28px;text-transform:uppercase">Recruitment enquiry</span>
+      <sc-if value="{{ sentEmp }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid var(--color-accent);background:var(--color-accent-100);padding:20px;display:flex;flex-direction:column;gap:6px"><strong>Enquiry received (prototype)</strong><span style="font-size:14px">In the live site this appears only after the server confirms the enquiry was stored. Reference: AY-E-0001 (sample).</span></div>
+      </sc-if>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px">
+        <sc-for list="{{ empFields }}" as="f" hint-placeholder-count="12">
+          <div class="field"><label>{{ f.l }}</label><input class="input" placeholder="{{ f.p }}"></input></div>
+        </sc-for>
+      </div>
+      <div class="field"><label>Required skills, experience &amp; additional requirements</label><textarea class="input" rows="4"></textarea></div>
+      <label style="display:flex;gap:10px;font-size:14px;line-height:1.5"><input type="checkbox"></input><span>I have read the <a href="#" onClick="{{ go.privacy }}">privacy policy</a> and consent to my details being used to respond to this enquiry.</span></label>
+      <button class="btn btn-primary" onClick="{{ sendEmp }}">Submit enquiry</button>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ============ SUBMIT CV / APPLY ============ -->
+<sc-if value="{{ isForm }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:880px;margin:0 auto;padding:56px clamp(20px,5vw,56px) 96px">
+    <div class="blueprint" style="position:relative;border:1px solid var(--color-divider);padding:clamp(20px,4vw,40px);display:flex;flex-direction:column;gap:18px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <sc-if value="{{ sentCv }}" hint-placeholder-val="{{ false }}">
+        <div style="border:1px solid var(--color-accent);background:var(--color-accent-100);padding:20px;display:flex;flex-direction:column;gap:6px"><strong>Application received (prototype)</strong><span style="font-size:14px">Shown only after the server confirms processing. Your reference: AY-C-0001 (sample).</span></div>
+      </sc-if>
+      <div class="field"><label>Applying for</label><input class="input" value="{{ applyingFor }}" readOnly="{{ true }}"></input></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px">
+        <sc-for list="{{ cvFields }}" as="f" hint-placeholder-count="10">
+          <div class="field"><label>{{ f.l }}</label><input class="input" placeholder="{{ f.p }}"></input></div>
+        </sc-for>
+      </div>
+      <div class="field"><label>CV / résumé (PDF or DOCX, max 5 MB)</label><div style="border:1px dashed var(--color-divider);padding:28px;text-align:center;font-size:14px">Drag a file here or <a href="#">browse</a></div></div>
+      <div class="field"><label>Cover letter (optional)</label><textarea class="input" rows="4"></textarea></div>
+      <label style="display:flex;gap:10px;font-size:14px;line-height:1.5"><input type="checkbox"></input><span>I have read the <a href="#" onClick="{{ go.privacy }}">privacy notice</a> and consent to my information being processed for recruitment purposes.</span></label>
+      <button class="btn btn-primary" onClick="{{ sendCv }}">Submit application</button>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ============ COUNTRY ============ -->
+<sc-if value="{{ is.country }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px;align-items:start">
+    <figure class="blueprint" style="margin:0;position:relative;aspect-ratio:4/3">
+      <sc-for list="{{ ctryImgList }}" as="ci" hint-placeholder-count="0"><div role="img" aria-label="{{ ci.alt }}" style="position:absolute;inset:0;background:center / cover no-repeat url({{ ci.src }})"></div></sc-for><sc-if value="{{ ctryNoImg }}" hint-placeholder-val="{{ true }}"><image-slot id="{{ ctry.imgId }}" shape="rect" placeholder="{{ ctry.imgHint }}"></image-slot></sc-if>
+      <sc-if value="{{ ctryCredit }}" hint-placeholder-val="{{ false }}"><figcaption style="position:absolute;right:0;bottom:-24px;font-size:11px;color:var(--color-neutral-700)">Photo: Wikimedia Commons</figcaption></sc-if>
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    </figure>
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <span class="tag tag-neutral" style="align-self:start">General information — verify with official sources</span>
+      <sc-for list="{{ ctryFacts }}" as="f" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:8px;border-top:1px solid var(--color-divider);padding-top:16px">
+          <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:22px;text-transform:uppercase">{{ f.k }}</span>
+          <span style="font-size:16px;line-height:1.6">{{ f.v }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+  <section style="max-width:1280px;margin:0 auto;padding:0 clamp(20px,5vw,56px) 96px;display:flex;flex-direction:column;gap:24px">
+    <h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:36px;text-transform:uppercase;margin:0;border-bottom:1px solid var(--color-text);padding-bottom:12px">Current vacancies in {{ ctry.name }}</h2>
+    <sc-for list="{{ ctryJobs }}" as="j" hint-placeholder-count="2">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid var(--color-divider)">
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:var(--font-heading);font-size:22px;text-transform:uppercase">{{ j.title }}</span><span style="font-size:14px">{{ j.city }} · {{ j.type }} · Sample listing</span></div>
+        <div style="display:flex;gap:8px"><button class="btn btn-secondary" onClick="{{ j.open }}">View details</button><button class="btn btn-primary" onClick="{{ j.apply }}">Apply now</button></div>
+      </div>
+    </sc-for>
+    <sc-if value="{{ noCtryJobs }}" hint-placeholder-val="{{ false }}"><p style="margin:0;font-size:15px">No vacancies are currently advertised for {{ ctry.name }}. <a href="#" onClick="{{ go.submitcv }}">Submit your CV</a> to be considered for future roles.</p></sc-if>
+  </section>
+</sc-if>
+
+<!-- ============ OFFICES ============ -->
+<sc-if value="{{ is.offices }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,56px) 96px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:32px">
+    <sc-for list="{{ offices }}" as="o" hint-placeholder-count="5">
+      <div class="card blueprint" style="position:relative;border:1px solid var(--color-divider);padding:28px;display:flex;flex-direction:column;gap:12px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">{{ o.role }}</span>
+        <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:30px;text-transform:uppercase">{{ o.country }}</span>
+        <div style="display:flex;flex-direction:column;gap:6px;font-size:14px;border-top:1px solid var(--color-divider);padding-top:12px;color:color-mix(in srgb,var(--color-text) 75%,transparent)"><span>Address — to be verified</span><span>Telephone — to be verified</span><span>Email — to be verified</span></div>
+      </div>
+    </sc-for>
+  </section>
+</sc-if>
+
+<!-- ============ CONTACT ============ -->
+<sc-if value="{{ is.contact }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:1280px;margin:0 auto;padding:72px clamp(20px,5vw,56px) 96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:56px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <button class="btn btn-secondary" style="align-self:start" onClick="{{ go.submitcv }}">I'm a candidate — submit CV</button>
+      <button class="btn btn-secondary" style="align-self:start" onClick="{{ go.employers }}">I'm an employer — hiring enquiry</button>
+      <div style="display:flex;flex-direction:column;border-top:1px solid var(--color-divider)">
+        <button onClick="{{ openMail }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text)" style-hover="color:var(--color-accent-700)"><span style="width:52px;height:52px;flex:none;border:1px solid var(--color-divider);display:flex;align-items:center;justify-content:center"><img src="https://unpkg.com/lucide-static@latest/icons/mail.svg" alt="" width="28" height="28" style="display:block;flex:none"></img></span><span style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">Email</span>
+          <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:26px">info@ardineandyami.com</span></span>
+        </button>
+        <button onClick="{{ openWa }}" style="all:unset;cursor:pointer;display:flex;align-items:center;gap:16px;padding:18px 0;border-bottom:1px solid var(--color-divider);color:var(--color-text)" style-hover="color:var(--color-accent-700)"><span style="width:52px;height:52px;flex:none;border:1px solid var(--color-divider);display:flex;align-items:center;justify-content:center"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="" width="28" height="28" style="display:block;flex:none"></img></span><span style="display:flex;flex-direction:column;gap:4px">
+          <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">WhatsApp</span>
+          <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:26px">+971 52 136 3917</span></span>
+        </button>
+      </div>
+    </div>
+    <div class="blueprint" style="position:relative;border:1px solid var(--color-divider);padding:32px;display:flex;flex-direction:column;gap:14px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div class="field"><label>Name</label><input class="input"></input></div>
+      <div class="field"><label>Email</label><input class="input" type="email"></input></div>
+      <div class="field"><label>Subject</label><input class="input"></input></div>
+      <div class="field"><label>Message</label><textarea class="input" rows="5"></textarea></div>
+      <button class="btn btn-primary" style="align-self:start">Send message</button>
+    </div>
+  </section>
+</sc-if>
+
+<!-- ============ LEGAL ============ -->
+<sc-if value="{{ is.legal }}" hint-placeholder-val="{{ false }}">
+  <section style="max-width:760px;margin:0 auto;padding:56px clamp(20px,5vw,56px) 96px;display:flex;flex-direction:column;gap:20px;font-size:16px;line-height:1.7">
+    <div style="border:1px dashed var(--color-divider);padding:20px;font-size:14px">Placeholder — final text must be drafted for Ardine &amp; Yami's legal entity and reviewed by a qualified adviser.</div>
+    <sc-for list="{{ legalSections }}" as="l" hint-placeholder-count="4">
+      <div style="display:flex;flex-direction:column;gap:6px"><h2 style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:24px;text-transform:uppercase;margin:0">{{ l }}</h2><p style="margin:0;color:color-mix(in srgb,var(--color-text) 75%,transparent)">Content to be supplied.</p></div>
+    </sc-for>
+  </section>
+</sc-if>
+</main>
+
+<sc-if value="{{ waOpen }}" hint-placeholder-val="{{ false }}">
+  <div class="dialog-backdrop" onClick="{{ closeWa }}" style="position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px">
+    <div class="dialog blueprint" role="dialog" aria-modal="true" aria-label="Chat on WhatsApp" onClick="{{ stop }}" style="position:relative;width:min(100%,440px);display:flex;flex-direction:column;gap:16px;background:var(--color-bg);padding:28px;border:1px solid var(--color-divider);box-shadow:var(--shadow-lg)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)"><img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="" width="20" height="20" style="display:block;flex:none"></img>WhatsApp</span>
+          <span class="dialog-title" style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:28px;text-transform:uppercase">Chat with our team</span>
+        </div>
+        <button class="btn btn-ghost" onClick="{{ closeWa }}" aria-label="Close">✕</button>
+      </div>
+      <div class="dialog-body" style="display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.55">
+        <span>+971 52 136 3917 · Replies during UAE office hours.</span>
+        <div class="field"><label>I am a</label><select class="input" value="{{ waWho }}" onChange="{{ setWaWho }}"><option>Candidate</option><option>Employer</option><option>Other</option></select></div>
+        <div class="field"><label>Message</label><textarea class="input" rows="3" value="{{ waMsg }}" onChange="{{ setWaMsg }}"></textarea></div>
+      </div>
+      <div class="dialog-actions" style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+        <button class="btn btn-secondary" onClick="{{ closeWa }}">Cancel</button>
+        <a class="btn btn-primary" href="{{ waLink }}" target="_blank" rel="noopener" style="text-decoration:none">Open WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ mailOpen }}" hint-placeholder-val="{{ false }}">
+  <div class="dialog-backdrop" onClick="{{ closeMail }}" style="position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:20px">
+    <div class="dialog blueprint" role="dialog" aria-modal="true" aria-label="Email us" onClick="{{ stop }}" style="position:relative;width:min(100%,480px);display:flex;flex-direction:column;gap:16px;background:var(--color-bg);padding:28px;border:1px solid var(--color-divider);box-shadow:var(--shadow-lg)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="display:flex;justify-content:space-between;align-items:start;gap:12px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <span style="display:flex;align-items:center;gap:8px;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)"><img src="https://unpkg.com/lucide-static@latest/icons/mail.svg" alt="" width="20" height="20" style="display:block;flex:none"></img>Email</span>
+          <span class="dialog-title" style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:28px;text-transform:uppercase">Write to our team</span>
+        </div>
+        <button class="btn btn-ghost" onClick="{{ closeMail }}" aria-label="Close">✕</button>
+      </div>
+      <div class="dialog-body" style="display:flex;flex-direction:column;gap:14px;font-size:15px;line-height:1.55">
+        <span>info@ardineandyami.com · We aim to reply within two working days.</span>
+        <div class="field"><label>I am a</label><select class="input" value="{{ mailWho }}" onChange="{{ setMailWho }}"><option>Candidate</option><option>Employer</option><option>Other</option></select></div>
+        <div class="field"><label>Subject</label><input class="input" value="{{ mailSubj }}" onChange="{{ setMailSubj }}"></input></div>
+        <div class="field"><label>Message</label><textarea class="input" rows="4" value="{{ mailMsg }}" onChange="{{ setMailMsg }}"></textarea></div>
+      </div>
+      <div class="dialog-actions" style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap">
+        <button class="btn btn-secondary" onClick="{{ closeMail }}">Cancel</button>
+        <a class="btn btn-primary" href="{{ mailLink }}" style="text-decoration:none">Open email app</a>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<footer style="border-top:1px solid var(--color-text);margin-top:0">
+  <div style="max-width:1280px;margin:0 auto;padding:64px clamp(20px,5vw,56px) 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px">
+    <div style="display:flex;flex-direction:column;gap:12px;grid-column:span 1">
+      <img src="assets/ardine-yami-logo.png" alt="Ardine &amp; Yami" style="width:140px;height:140px;display:block;mix-blend-mode:multiply"></img>
+      <span style="font-size:14px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 75%,transparent)">International recruitment. Head office: United Arab Emirates.</span>
+      <a href="#" onClick="{{ go.submitcv }}" style="font-size:14px;font-weight:600">Submit your CV →</a>
+      <a href="#" onClick="{{ go.employers }}" style="font-size:14px;font-weight:600">Employer enquiry →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+      <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">Quick links</span>
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="8"><a href="#" onClick="{{ n.go }}">{{ n.label }}</a></sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+      <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">Services</span>
+      <sc-for list="{{ services }}" as="s" hint-placeholder-count="12"><a href="#" onClick="{{ s.open }}">{{ s.name }}</a></sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+      <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">Destinations</span>
+      <sc-for list="{{ countries }}" as="c" hint-placeholder-count="7"><a href="#" onClick="{{ c.open }}">{{ c.name }}</a></sc-for>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;font-size:14px">
+      <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700)">Offices</span>
+      <sc-for list="{{ offices }}" as="o" hint-placeholder-count="5"><span>{{ o.country }} · {{ o.role }}</span></sc-for>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:24px clamp(20px,5vw,56px);border-top:1px solid var(--color-divider);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px">
+    <span style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:22px;text-transform:uppercase">Follow us for updates</span>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://www.facebook.com/ardineandyami" target="_blank" rel="noopener" aria-label="Facebook" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;font-size:14px;font-weight:600" style-hover="border-color:var(--color-accent);background:var(--color-accent-100)"><img src="https://cdn.simpleicons.org/facebook/0866FF" alt="" width="22" height="22" style="display:block"></img>Facebook</a>
+      <a href="https://www.instagram.com/ardineandyami" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;font-size:14px;font-weight:600" style-hover="border-color:var(--color-accent);background:var(--color-accent-100)"><img src="https://cdn.simpleicons.org/instagram/E4405F" alt="" width="22" height="22" style="display:block"></img>Instagram</a>
+      <a href="https://www.tiktok.com/@ardineandyami" target="_blank" rel="noopener" aria-label="TikTok" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--color-divider);color:var(--color-text);text-decoration:none;font-size:14px;font-weight:600" style-hover="border-color:var(--color-accent);background:var(--color-accent-100)"><img src="https://cdn.simpleicons.org/tiktok/000000" alt="" width="22" height="22" style="display:block"></img>TikTok</a>
+    </div>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:20px clamp(20px,5vw,56px) 40px;border-top:1px solid var(--color-divider);display:flex;flex-wrap:wrap;gap:12px 24px;font-size:13px;color:color-mix(in srgb,var(--color-text) 70%,transparent)">
+    <span>© 2026 Ardine &amp; Yami. Registration and licence details to be confirmed.</span>
+    <a href="#" onClick="{{ go.privacy }}">Privacy policy</a><a href="#" onClick="{{ go.terms }}">Terms &amp; conditions</a><a href="#" onClick="{{ go.cookies }}">Cookie policy</a>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const COUNTRIES=[
+ ['united-kingdom','United Kingdom','GB','Healthcare, hospitality, logistics and skilled trades.',['Healthcare & nursing','Hospitality','Transport & logistics','Skilled trades'],'English. Some roles and visa routes require evidence of English ability.'],
+ ['australia','Australia','AU','Construction, agriculture, healthcare and engineering.',['Construction','Agriculture','Healthcare & nursing','Engineering'],'English. Skills assessment by a relevant body may be required for some occupations.'],
+ ['canada','Canada','CA','Skilled trades, logistics, manufacturing and care.',['Skilled trades','Transport & logistics','Manufacturing','Healthcare & nursing'],'English and/or French depending on province and role.'],
+ ['germany','Germany','DE','Engineering, healthcare, IT and manufacturing.',['Engineering','Healthcare & nursing','Information technology','Manufacturing'],'German is commonly required; level depends on the role. Qualification recognition may apply.'],
+ ['new-zealand','New Zealand','NZ','Agriculture, construction, hospitality and healthcare.',['Agriculture','Construction','Hospitality','Healthcare & nursing'],'English.'],
+ ['france','France','FR','Hospitality, agriculture, construction and logistics.',['Hospitality','Agriculture','Construction','Transport & logistics'],'French is usually required for most roles.'],
+ ['spain','Spain','ES','Hospitality, agriculture and logistics.',['Hospitality','Agriculture','Transport & logistics'],'Spanish is usually required; some hospitality roles accept English.'],
+ ['united-arab-emirates','United Arab Emirates','AE','Hospitality, construction, healthcare and logistics.',['Hospitality','Construction','Healthcare & nursing','Transport & logistics'],'English widely used at work; Arabic an advantage for some roles.'],
+ ['saudi-arabia','Saudi Arabia','SA','Construction, engineering, healthcare and hospitality.',['Construction','Engineering','Healthcare & nursing','Hospitality'],'English common in many sectors; Arabic an advantage.'],
+ ['qatar','Qatar','QA','Hospitality, construction, facilities and logistics.',['Hospitality','Construction','Transport & logistics','Skilled trades'],'English widely used at work; Arabic an advantage.'],
+ ['kuwait','Kuwait','KW','Healthcare, engineering, oil & gas support and trades.',['Healthcare & nursing','Engineering','Skilled trades'],'English common in many workplaces; Arabic an advantage.'],
+ ['bahrain','Bahrain','BH','Hospitality, finance, healthcare and trades.',['Hospitality','Finance & accounting','Healthcare & nursing','Skilled trades'],'English widely used at work.'],
+ ['oman','Oman','OM','Construction, hospitality, logistics and engineering.',['Construction','Hospitality','Transport & logistics','Engineering'],'English common in many sectors; Arabic an advantage.']
+].map(([slug,name,code,short,cats,lang])=>({slug,name,code,short,cats,lang,imgId:'country-'+slug,imgHint:'Location photograph — '+name}));
+const SERVICES=[
+ ['international-recruitment','International Recruitment','Sourcing qualified candidates across borders for employers in our destination markets.'],
+ ['permanent','Permanent Recruitment','Long-term hires, from role definition through to shortlist and offer.'],
+ ['temporary-contract','Temporary & Contract','Flexible staffing for seasonal peaks, projects and fixed-term needs.'],
+ ['executive-search','Executive Search','Discreet, research-led search for senior and leadership appointments.'],
+ ['skilled-trades','Skilled & Technical','Electricians, welders, mechanics, technicians and other trades.'],
+ ['healthcare','Healthcare','Nurses, carers and allied health professionals for clinical and care settings.'],
+ ['engineering','Engineering & Construction','Engineers, site supervisors and construction workforce.'],
+ ['hospitality','Hospitality','Chefs, front-of-house and housekeeping teams for hotels and restaurants.'],
+ ['logistics','Logistics & Driving','Drivers, warehouse operatives and supply-chain roles.'],
+ ['agriculture','Agriculture','Farm, horticulture and food-production workers.'],
+ ['manufacturing','Manufacturing','Production, machine operation and quality roles.'],
+ ['business-admin-hr','Business, Admin & HR','Administrative, HR and operations support professionals.']
+].map(([slug,name,desc],i)=>({slug,name,desc,num:String(i+1).padStart(2,'0'),imgId:'service-'+slug}));
+const INDUSTRIES=['Healthcare & nursing','Engineering','Construction','Hospitality','Transport & logistics','Manufacturing','Agriculture','Information technology','Finance & accounting','Business administration','Skilled trades','Teaching & education'];
+const OFFICES=[['United Arab Emirates','Head office'],['India','Regional office'],['United Kingdom','Regional office'],['Australia','Regional office']].map(([country,role])=>({country,role}));
+const JOBS=[
+ {id:'s1',title:'Registered Nurse',employer:'Private hospital group (name withheld)',country:'United Kingdom',city:'Manchester',cat:'Healthcare & nursing',type:'Permanent',salary:'Salary on application',exp:'2+ years post-qualification',posted:'24 Oct 2026',d:5},
+ {id:'s2',title:'Commercial Electrician',employer:'Construction contractor',country:'Australia',city:'Perth, WA',cat:'Skilled trades',type:'Contract',salary:'To be confirmed',exp:'4+ years trade experience',posted:'22 Oct 2026',d:7},
+ {id:'s3',title:'HGV Driver (Class CE)',employer:'Logistics operator',country:'Germany',city:'Hamburg',cat:'Transport & logistics',type:'Permanent',salary:'To be confirmed',exp:'3+ years, valid licence',posted:'20 Oct 2026',d:9},
+ {id:'s4',title:'Sous Chef',employer:'Hotel group (name withheld)',country:'New Zealand',city:'Queenstown',cat:'Hospitality',type:'Permanent',salary:'To be confirmed',exp:'3+ years in a professional kitchen',posted:'18 Oct 2026',d:11},
+ {id:'s5',title:'Farm Machinery Operator',employer:'Agricultural producer',country:'Canada',city:'Saskatchewan',cat:'Agriculture',type:'Temporary',salary:'To be confirmed',exp:'2+ seasons experience',posted:'15 Oct 2026',d:14},
+ {id:'s6',title:'CNC Machinist',employer:'Manufacturer',country:'Spain',city:'Valencia',cat:'Manufacturing',type:'Permanent',salary:'To be confirmed',exp:'3+ years CNC operation',posted:'12 Oct 2026',d:17}
+];
+const HEADS={
+ about:['About us','Who we are','An international recruitment agency headquartered in the UAE','We connect candidates from around the world with employers abroad, supported by regional teams in India, the UK and Australia.'],
+ services:['Our services','Recruitment services','Recruitment services for international hiring','Services offered by Ardine & Yami. Each links to a dedicated page with scope and next steps.'],
+ jobs:['Find a job','Vacancies','Find international jobs','Search by destination, category and employment type. Filters sync to the URL in the live build so searches can be shared.'],
+ candidates:['For candidates','Candidates','Guidance for candidates','What to expect when applying through us, how to prepare, and which steps are handled by employers or authorities.'],
+ employers:['For employers','Employers','Hire international talent','Tell us about the roles you need to fill. A consultant will review your requirements and discuss next steps.'],
+ submitcv:['Submit CV','Submit your CV','Submit your CV','Register your details so we can consider you for current and future vacancies that match your experience.'],
+ offices:['Global offices','Locations','Our global offices','Head office in the United Arab Emirates, with regional offices in India, the United Kingdom and Australia.'],
+ contact:['Contact us','Contact','Contact us','Send us a message, or choose the route that fits your enquiry.']
+};
+const NAV=[['Home','home'],['About Us','about'],['Our Services','services'],['Find a Job','jobs'],['For Candidates','candidates'],['For Employers','employers'],['Global Offices','offices'],['Contact Us','contact']];
+class Component extends DCLogic {
+  state={page:'home',param:null,fq:'',fCountry:'',fCat:'',fType:'',sentEmp:false,sentCv:false};
+  go(page,param=null){this.setState({page,param,sentEmp:false,sentCv:false,menuOpen:false});window.scrollTo(0,0);}
+  componentDidMount(){this.loadImgs();this.onR=()=>this.setState({w:window.innerWidth});this.onR();window.addEventListener('resize',this.onR);}
+  loadImgs(){
+    const P={about:'Teamwork',emp:'Employment','svc-permanent':'Employment','svc-temporary-contract':'Temporary_work','svc-executive-search':'Executive_search','svc-skilled-trades':'Welding','svc-logistics':'Truck_driver','svc-agriculture':'Farmer','svc-manufacturing':'Factory','svc-business-admin-hr':'Office'};
+    const L={...P,'united-kingdom':'Tower_Bridge','australia':'Sydney_Opera_House','canada':'Moraine_Lake','germany':'Brandenburg_Gate','new-zealand':'Milford_Sound','france':'Paris','spain':'Sagrada_Família','united-arab-emirates':'Burj_Khalifa','saudi-arabia':'Kingdom_Centre','qatar':'Doha','kuwait':'Kuwait_City','bahrain':'Manama','oman':'Muscat'};
+    Object.entries(L).forEach(([slug,t])=>fetch('https://en.wikipedia.org/api/rest_v1/page/summary/'+encodeURIComponent(t)).then(r=>r.json()).then(d=>{
+      let u=d.thumbnail&&d.thumbnail.source;if(!u||!u.includes('/commons/'))return;u=u.replace(/\/(\d+)px-/,'/960px-');
+      this.setState(s=>({imgs:{...(s.imgs||{}),[slug]:u}}));}).catch(()=>{}));
+  }
+  componentWillUnmount(){window.removeEventListener('resize',this.onR);}
+  renderVals(){
+    const s=this.state,p=s.page,g=(pg,pa)=>(e)=>{e&&e.preventDefault&&e.preventDefault();this.go(pg,pa);};
+    const w=s.w||1400,wide=w>=1280,narrow=!wide;
+    const go={};['home','about','services','jobs','candidates','employers','submitcv','offices','contact'].forEach(k=>go[k]=g(k));
+    go.privacy=g('legal','Privacy policy');go.terms=g('legal','Terms & conditions');go.cookies=g('legal','Cookie policy');
+    const job=j=>({...j,open:g('job',j.id),apply:g('apply',j.id)});
+    const jobs=JOBS.map(job);
+    const ctry=COUNTRIES.find(c=>c.slug===s.param)||COUNTRIES[0];
+    const svc=SERVICES.find(x=>x.slug===s.param)||SERVICES[0];
+    const cj=jobs.find(j=>j.id===s.param)||jobs[0];
+    const q=s.fq.toLowerCase();
+    const filtered=jobs.filter(j=>(!q||j.title.toLowerCase().includes(q))&&(!s.fCountry||j.country===s.fCountry)&&(!s.fCat||j.cat===s.fCat)&&(!s.fType||j.type===s.fType));
+    let head;
+    if(p==='country')head=['Destinations / '+ctry.name,'Destination market',ctry.name,'General information about recruitment for roles in '+ctry.name+'. Visa and immigration requirements are set by the national authorities and must be verified with official sources.'];
+    else if(p==='service')head=['Services / '+svc.name,'Service '+svc.num,svc.name,svc.desc];
+    else if(p==='job')head=['Vacancies / '+cj.title,cj.city+', '+cj.country,cj.title,cj.employer+' · '+cj.type];
+    else if(p==='apply')head=['Apply','Application',('Apply: '+cj.title),'Complete the form below. Fields marked as required are validated on both the browser and the server in the live build.'];
+    else if(p==='legal')head=[s.param,'Legal',s.param,'How Ardine & Yami handles information and the terms that apply to candidates and employers.'];
+    else head=HEADS[p]||['','','',''];
+    const PIC={o:{},n:{}};{const I=s.imgs||{};PIC.n.hero=true;PIC.n.why=true;PIC.o.hero=[];PIC.o.why=[];PIC.n.about=true;PIC.o.about=[];[,['emp','emp'],['svc','svc-'+svc.slug]].forEach(([k,key])=>{PIC.o[k]=I[key]?[{src:I[key],alt:''}]:[];PIC.n[k]=!I[key];});}
+    const ev=k=>e=>this.setState({[k]:e.target.value});
+    return {
+      is:{home:p==='home',about:p==='about',services:p==='services',service:p==='service',jobs:p==='jobs',job:p==='job',candidates:p==='candidates',employers:p==='employers',offices:p==='offices',contact:p==='contact',country:p==='country',legal:p==='legal'},
+      mailOpen:!!s.mailOpen,openMail:()=>this.setState({mailOpen:true}),closeMail:()=>this.setState({mailOpen:false}),
+      mailWho:s.mailWho||'Candidate',mailSubj:s.mailSubj??'Recruitment enquiry',mailMsg:s.mailMsg??'',
+      setMailWho:e=>this.setState({mailWho:e.target.value}),setMailSubj:e=>this.setState({mailSubj:e.target.value}),setMailMsg:e=>this.setState({mailMsg:e.target.value}),
+      mailLink:'mailto:info@ardineandyami.com?subject='+encodeURIComponent('['+(s.mailWho||'Candidate')+'] '+(s.mailSubj??'Recruitment enquiry'))+'&body='+encodeURIComponent(s.mailMsg??''),
+      waOpen:!!s.waOpen,openWa:()=>this.setState({waOpen:true}),closeWa:()=>this.setState({waOpen:false}),stop:e=>e.stopPropagation(),
+      waWho:s.waWho||'Candidate',waMsg:s.waMsg??'Hello Ardine & Yami, I would like to know more about your recruitment services.',
+      setWaWho:e=>this.setState({waWho:e.target.value}),setWaMsg:e=>this.setState({waMsg:e.target.value}),
+      waLink:'https://wa.me/971521363917?text='+encodeURIComponent('['+(s.waWho||'Candidate')+'] '+(s.waMsg??'Hello Ardine & Yami, I would like to know more about your recruitment services.')),
+      wide,narrow,showCtas:w>=720,menuOpen:!!s.menuOpen,menuVisible:narrow&&!!s.menuOpen,menuLabel:s.menuOpen?'Close':'Menu',
+      toggleMenu:()=>this.setState(x=>({menuOpen:!x.menuOpen})),
+      notHome:p!=='home',isForm:p==='submitcv'||p==='apply',go,
+      head:{crumb:head[0],kicker:head[1],title:head[2],intro:head[3]},
+      navItems:NAV.map(([label,k])=>({label,go:go[k]})),
+      countries:COUNTRIES.map(c=>{const img=(s.imgs||{})[c.slug];return {...c,img,noImg:!img,open:g('country',c.slug)};}),
+      pic:PIC.o,nopic:PIC.n,
+      ctryImgList:(s.imgs||{})[ctry.slug]?[{src:s.imgs[ctry.slug],alt:ctry.imgHint}]:[],ctryNoImg:!(s.imgs||{})[ctry.slug],ctryCredit:!!(s.imgs||{})[ctry.slug],
+      services:SERVICES.map(x=>({...x,open:g('service',x.slug)})),
+      industries:INDUSTRIES.map((name,i)=>({name,num:String(i+1).padStart(2,'0')})),
+      offices:OFFICES,
+      stepsCand:['Explore suitable vacancies.','Submit an application and CV.','Complete screening and assessment.','Attend interviews with relevant employers.','Receive updates and follow instructions for next employment steps.'].map((t,i)=>({n:'0'+(i+1),t})),
+      stepsEmp:['Submit your staffing requirements.','Discuss the role with our recruitment team.','We source and screen suitable candidates.','We coordinate interviews and selection.','We support the agreed recruitment and onboarding process.'].map((t,i)=>({n:'0'+(i+1),t})),
+      why:[['International sourcing','Candidate pools across multiple regions.'],['Cross-market coordination','Head office and regional teams working together.'],['Personalised support','A named contact through the process.'],['Employer focus','Shortlists built around your brief.'],['Clear communication','Regular, honest updates.'],['Structured screening','Consistent checks before introduction.'],['Labour-market understanding','Awareness of each destination’s expectations.'],['Confidential handling','Candidate data handled securely.']].map(([t,d])=>({t,d})),
+      latestJobs:jobs.slice(0,3),
+      testimonials:[{q:'Approved candidate testimonial will appear here.',by:'Candidate name, role — pending approval'},{q:'Approved employer testimonial will appear here.',by:'Client name, company — pending approval'}],
+      svc,svcSteps:['Briefing: we confirm the role, location and requirements.','Sourcing through our international network.','Screening, assessment and shortlisting.','Interview coordination and offer support.'].map((t,i)=>({n:'0'+(i+1),t})),
+      fq:s.fq,fCountry:s.fCountry,fCat:s.fCat,fType:s.fType,setQ:ev('fq'),setCountry:ev('fCountry'),setCat:ev('fCat'),setType:ev('fType'),
+      clearF:()=>this.setState({fq:'',fCountry:'',fCat:'',fType:''}),
+      filteredJobs:filtered,jobCount:filtered.length,noJobs:filtered.length===0,
+      job:cj,jobFacts:[['Destination',cj.country],['Location',cj.city],['Category',cj.cat],['Employment type',cj.type],['Salary',cj.salary],['Experience',cj.exp],['Posted',cj.posted]].map(([k,v])=>({k,v})),
+      ctry,ctryFacts:[{k:'Typical job categories',v:ctry.cats.join(' · ')},{k:'Language expectations',v:ctry.lang},{k:'Recruitment process',v:'Application and screening with us, employer interview and selection, then offer and contract. Work-permit steps, where applicable, are handled through the official routes.'}],
+      ctryJobs:jobs.filter(j=>j.country===ctry.name),noCtryJobs:!jobs.some(j=>j.country===ctry.name),
+      candTopics:[['Before you apply','Check the experience, qualifications and language level each vacancy lists.'],['Your CV','Keep it clear: dates, employers, duties and certificates.'],['Interviews','Most first interviews are by video. We share preparation notes in advance.'],['Documents','You may be asked for certificates, references and identity documents for verification.']].map(([t,d])=>({t,d})),
+      overseas:[['Application & selection','Apply, be screened, and be selected by the employer.','We support'],['Interviews & checks','Interviews and qualification checks.','We coordinate'],['Offer & contract','The employer issues the offer and contract.','Employer'],['Work permit / visa','Where applicable, decided by government authorities.','Authorities'],['Document verification','Attestation or recognition of qualifications.','Independent / official'],['Relocation','Preparation for travel and arrival, where offered.','Confirm per role']].map(([t,d,who])=>({t,d,who})),
+      empFields:[['Company name',''],['Contact person',''],['Business email','name@company.com'],['Telephone','+44 …'],['Company country',''],['Position to fill',''],['Number required','e.g. 5'],['Destination country',''],['Job category',''],['Employment type','Permanent / contract'],['Salary range (if known)',''],['Desired start date','MM / YYYY']].map(([l,p])=>({l,p})),
+      cvFields:[['Full legal name',''],['Email address',''],['Telephone (with country code)','+91 …'],['Country of residence',''],['Preferred destination',''],['Preferred job category',''],['Years of relevant experience',''],['Highest relevant qualification',''],['Languages spoken',''],['Licences / certifications','Optional']].map(([l,p])=>({l,p})),
+      applyingFor:p==='apply'?cj.title+' — '+cj.city+', '+cj.country:'General application (no specific vacancy)',
+      sentEmp:s.sentEmp,sentCv:s.sentCv,sendEmp:()=>this.setState({sentEmp:true}),sendCv:()=>this.setState({sentCv:true}),
+      legalSections:['Who we are','What information we collect','How we use it','Retention & your rights']
+    };
+  }
+}
+</script>
+</body>
+</html>
